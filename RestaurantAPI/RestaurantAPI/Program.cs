@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RestaurantAPI;
 using RestaurantAPI.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +15,15 @@ builder.Services.AddDbContext<RestaurantDbContext>(options =>
         .GetConnectionString("RestaurantDbConnection"));
 });
 
+builder.Services.AddScoped<RestaurantSeeder>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<RestaurantSeeder>();
+seeder.Seed();
 
 app.UseHttpsRedirection();
 
