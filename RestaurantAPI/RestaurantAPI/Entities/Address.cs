@@ -1,6 +1,6 @@
 namespace RestaurantAPI.Entities
 {
-    public class Adress
+    public class Address
     {
         public int Id { get; set; }
 #nullable enable

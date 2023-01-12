@@ -83,3 +83,4 @@ D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\runtimes\win\lib\net
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\obj\Debug\net6.0\RestaurantAPI.csproj.CopyComplete
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\libman.json

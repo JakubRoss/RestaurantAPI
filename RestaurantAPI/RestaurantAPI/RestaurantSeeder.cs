@@ -47,7 +47,7 @@ namespace RestaurantAPI
                             Price = 9.9M
                         }
                     },
-                    Adress = new Adress()
+                    Address = new Address()
                     {
                         City = "Wiecbork",
                         Street = "Gdanska 18",
@@ -77,7 +77,7 @@ namespace RestaurantAPI
                             Price = 21.99M
                         }
                     },
-                    Adress = new Adress()
+                    Address = new Address()
                     {
                         City = "Bydgoszcz",
                         Street = "Aleja Jana Pawla II 123",
