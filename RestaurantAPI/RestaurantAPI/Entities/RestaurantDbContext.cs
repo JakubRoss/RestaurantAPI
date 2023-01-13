@@ -17,7 +17,14 @@ namespace RestaurantAPI.Entities
                 .Property(n => n.Name)
                 .IsRequired()
                 .HasMaxLength(25);
-
+            modelBuilder.Entity<Address>()
+                .Property(n=>n.City) 
+                .IsRequired()
+                .HasMaxLength(25);
+            modelBuilder.Entity<Address>()
+                .Property(n => n.Street)
+                .IsRequired()
+                .HasMaxLength(25);
             modelBuilder.Entity<Dish>()
                 .Property(n=>n.Name)
                 .IsRequired()
