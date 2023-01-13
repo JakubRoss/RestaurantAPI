@@ -9,6 +9,8 @@ namespace RestaurantAPI
     {
         public RestaurantMappingProfile()
         {
+            CreateMap<EditRestaurantDto,RestaurantDto>();
+
             CreateMap<Restaurant, NamesDto>();
 
             CreateMap<Restaurant, RestaurantDto>()
