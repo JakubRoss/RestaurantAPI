@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using RestaurantAPI;
 using RestaurantAPI.Entities;
 using RestaurantAPI.Services;
@@ -7,6 +8,9 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Host.UseNLog();
 
 builder.Services.AddControllers();
 

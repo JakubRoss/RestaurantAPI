@@ -19,10 +19,12 @@ namespace RestaurantAPI.Services
     {
         private readonly RestaurantDbContext _dbContext;
         private readonly IMapper _mapper;
-        public RestaurantService(RestaurantDbContext dbContext, IMapper mapper)
+        private readonly ILogger _logger;
+        public RestaurantService(RestaurantDbContext dbContext, IMapper mapper, ILogger<RestaurantService> logger)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
 
@@ -31,6 +33,7 @@ namespace RestaurantAPI.Services
             var restaurant = _dbContext.Restaurants.FirstOrDefault(x => x.Id == id);
             if (restaurant == null)
                 return false;
+            _logger.LogTrace($"Restaurant name with id:{restaurant.Id} was changed from {restaurant.Name} to {editRestaurant.Name}");
             restaurant.Name = editRestaurant.Name;
             restaurant.Description= editRestaurant.Description;
             restaurant.HasDelivery = editRestaurant.HasDelivery;

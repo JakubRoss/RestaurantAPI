@@ -84,3 +84,7 @@ D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\obj\Debug\net6.0\RestaurantAPI.csproj
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\libman.json
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\nlog.config
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\NLog.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
