@@ -9,11 +9,15 @@ namespace RestaurantAPI
     {
         public RestaurantMappingProfile()
         {
+            CreateMap<Restaurant, NamesDto>();
+
             CreateMap<Restaurant, RestaurantDto>()
                 .ForMember(r => r.City, d => d.MapFrom(s => s.Address.City))
                 .ForMember(r => r.Street, d => d.MapFrom(s => s.Address.Street))
                 .ForMember(r => r.PostalCode, d => d.MapFrom(s => s.Address.PostalCode));
+
             CreateMap<Dish, DishDto>();
+
             CreateMap<CreateRestaurantDto, Restaurant>()
                 .ForMember(r => r.Address,c => c.MapFrom(dto => new Address()
                 {

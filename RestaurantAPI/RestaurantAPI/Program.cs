@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantAPI;
 using RestaurantAPI.Entities;
+using RestaurantAPI.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<RestaurantDbContext>(options =>
 
 builder.Services.AddScoped<RestaurantSeeder>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IRestaurantService,RestaurantService>();
 
 var app = builder.Build();
 
