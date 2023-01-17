@@ -2,12 +2,14 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Entities;
+using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using RestaurantAPI.Services;
 
 namespace RestaurantAPI
 {
     [Route("api/restaurant")]
+    [ApiController]
     public class RestaurantController : ControllerBase
     {
 
@@ -21,32 +23,24 @@ namespace RestaurantAPI
         [HttpPut("{id}")]
         public ActionResult EditRestaurant([FromBody] EditRestaurantDto dto ,[FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var value = _service.Edit(dto,id);
-            if (value)
-                return NoContent();
-            return NotFound();
+
+            _service.Update(dto,id);
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public ActionResult Delete([FromRoute]int id)
         {
-            var value = _service.Delete(id);
-            if(value)
-                return NoContent();
-            return NotFound();
+            _service.Delete(id);
+
+            return NoContent();
         }
 
         [HttpPost]
         public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto dto) 
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
             var id = _service.CreateRestaurant(dto);
 
             return Created($"api/restaurant/{id}",id);
@@ -64,7 +58,7 @@ namespace RestaurantAPI
         {
             var restaurnat = _service.GetById(id);
             if (restaurnat == null)
-                return NotFound();
+                throw new NotFoundException("Restaurant not found");
             return Ok(restaurnat);
         }
 
