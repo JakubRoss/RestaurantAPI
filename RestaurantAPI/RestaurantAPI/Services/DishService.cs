@@ -1,14 +1,17 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Entities;
 using RestaurantAPI.Exceptions;
 using RestaurantAPI.Services;
+using System.Collections;
 
 namespace RestaurantAPI
 {
     public interface IDishService
     {
         int Create(int restaurantId, CreateDishDto createDishDto);
+        IEnumerable getAllDishes(int restaurantId);
     }
 
     public class DishService : IDishService
@@ -16,7 +19,7 @@ namespace RestaurantAPI
         private RestaurantDbContext _dbContext;
         private IMapper _mapper;
 
-        public DishService(RestaurantDbContext dbContext, IMapper mapper, ILogger<RestaurantService> logger)
+        public DishService(RestaurantDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -32,6 +35,12 @@ namespace RestaurantAPI
             _dbContext.SaveChanges();
 
             return DishEntity.Id;
+        }
+        public IEnumerable getAllDishes(int restaurantId)
+        {
+            var dishes = _dbContext.Dishes
+                .Where(i=>i.RestaurantId==restaurantId);
+            return dishes;
         }
     }
 }

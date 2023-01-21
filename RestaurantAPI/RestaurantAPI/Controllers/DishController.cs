@@ -12,11 +12,19 @@ namespace RestaurantAPI
         {
             _dishService = dishServce;
         }
+
         [HttpPost]
         public ActionResult Post([FromRoute] int restaurantId, [FromBody] CreateDishDto createDishDto) 
         {
             var newDishId=_dishService.Create(restaurantId, createDishDto);
             return Created($"api/restaurant/{restaurantId}/dish/{newDishId}",null);
+        }
+
+        [HttpGet]
+        public ActionResult GetDishes([FromRoute]int restaurantId)
+        {
+            var dishes =_dishService.getAllDishes(restaurantId);
+            return Ok(dishes);
         }
     }
 }
