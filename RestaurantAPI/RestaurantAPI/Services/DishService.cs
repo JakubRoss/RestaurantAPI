@@ -12,6 +12,7 @@ namespace RestaurantAPI
     {
         int Create(int restaurantId, CreateDishDto createDishDto);
         IEnumerable getAllDishes(int restaurantId);
+        int deleteDish(int dishID,int restaurantID);
     }
 
     public class DishService : IDishService
@@ -41,6 +42,19 @@ namespace RestaurantAPI
             var dishes = _dbContext.Dishes
                 .Where(i=>i.RestaurantId==restaurantId);
             return dishes;
+        }
+
+        public int deleteDish(int dishID, int restaurantID)
+        {
+            var restaurant = _dbContext.Restaurants.FirstOrDefault(id => id.Id == restaurantID);
+            if (restaurant == null)
+                throw new NotFoundException("Restaurant not found");
+
+            var dish = _dbContext.Dishes
+                .FirstOrDefault(i => i.Id == dishID);
+            _dbContext.Dishes.Remove(dish);
+            _dbContext.SaveChanges();
+            return dish.Id;
         }
     }
 }

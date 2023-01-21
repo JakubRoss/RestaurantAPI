@@ -26,5 +26,12 @@ namespace RestaurantAPI
             var dishes =_dishService.getAllDishes(restaurantId);
             return Ok(dishes);
         }
+
+        [HttpDelete("{dishID}")]
+        public ActionResult Delete([FromRoute] int restaurantId , [FromRoute]int dishID)
+        {
+            var dishid = _dishService.deleteDish(dishID,restaurantId);
+            return NoContent();
+        }
     }
 }
