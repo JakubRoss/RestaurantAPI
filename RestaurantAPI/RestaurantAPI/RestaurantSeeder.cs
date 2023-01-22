@@ -15,7 +15,7 @@ namespace RestaurantAPI
 
             if (_dbContext.Database.CanConnect())
             {
-                if (_dbContext.Roles.Any())
+                if (!_dbContext.Roles.Any())
                 {
                     var roles = GetRoles();
                     _dbContext.Roles.AddRange(roles);
