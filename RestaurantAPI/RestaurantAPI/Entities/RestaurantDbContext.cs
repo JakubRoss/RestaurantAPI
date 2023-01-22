@@ -11,8 +11,18 @@ namespace RestaurantAPI.Entities
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Address> Adresses { get; set; }
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .Property(x => x.Email)
+                .IsRequired()
+                .HasMaxLength(50);
+            modelBuilder.Entity<Role>()
+                .Property(x=>x.Name)
+                .IsRequired()
+                .HasMaxLength(50);
             modelBuilder.Entity<Restaurant>()
                 .Property(n => n.Name)
                 .IsRequired()
