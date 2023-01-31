@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "g3tSlouDDopOhq00BCyCDbPuEI3CSQKOcEtSn+cGXnuV5p9WJjzrlBaDWmWJnWHHdQuABlFIXfzlvtH4p6gJeQ==",
+  "dgSpecHash": "AEhrI+RCFK53i1zib4TbT2wlWIbTmkTkMzH+QeCXH3buSuGAOFsmTpzxeACgawXpme0llbPxipcQn9+vpboORA==",
   "success": true,
   "projectFilePath": "D:\\REPOS\\Kata2\\RestaurantAPI\\RestaurantAPI\\RestaurantAPI.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Kubemek\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
     "C:\\Users\\Kubemek\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
     "C:\\Users\\Kubemek\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Kubemek\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.3\\microsoft.aspnetcore.authentication.jwtbearer.6.0.3.nupkg.sha512",
     "C:\\Users\\Kubemek\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Kubemek\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Kubemek\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

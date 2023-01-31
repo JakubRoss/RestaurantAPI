@@ -93,3 +93,7 @@ D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\Swashbuckle.AspNetCo
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\obj\Debug\net6.0\RestaurantAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\FluentValidation.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\REPOS\Kata2\RestaurantAPI\RestaurantAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
