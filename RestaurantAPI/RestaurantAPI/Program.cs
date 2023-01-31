@@ -19,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var AuthenticationSettings = new AuthenticationSettings();
 builder.Configuration.GetSection("Authentication").Bind(AuthenticationSettings);
+builder.Services.AddSingleton(AuthenticationSettings);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = "Bearer";
