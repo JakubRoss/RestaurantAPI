@@ -90,7 +90,7 @@ app.UseSwaggerUI(c =>
 
 });
 
-//app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapControllers();
 
