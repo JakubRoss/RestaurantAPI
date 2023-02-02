@@ -6,6 +6,7 @@ using RestaurantAPI.Entities;
 using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using RestaurantAPI.Services;
+using System.Security.Claims;
 
 namespace RestaurantAPI
 {
@@ -26,7 +27,7 @@ namespace RestaurantAPI
         public ActionResult EditRestaurant([FromBody] EditRestaurantDto dto ,[FromRoute] int id)
         {
 
-            _service.Update(dto,id);
+            _service.Update(dto,id, User);
 
             return Ok();
         }
@@ -43,8 +44,8 @@ namespace RestaurantAPI
         [Authorize(Roles ="Admin, Manager")]
         public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto dto) 
         {
-
-            var id = _service.CreateRestaurant(dto);
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var id = _service.CreateRestaurant(dto,userId);
 
             return Created($"api/restaurant/{id}",id);
         }

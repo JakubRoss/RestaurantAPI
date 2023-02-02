@@ -3,17 +3,19 @@ using RestaurantAPI.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Entities;
 using RestaurantAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace RestaurantAPI.Services
 {
     public interface IRestaurantService
     {
-        int CreateRestaurant(CreateRestaurantDto dto);
+        int CreateRestaurant(CreateRestaurantDto dto, int userId);
         IEnumerable<RestaurantDto> GetAll();
         RestaurantDto GetById(int id);
         IEnumerable<NamesDto> GetList();
         public void Delete(int id);
-        public void Update(EditRestaurantDto editRestaurant, int id);
+        public void Update(EditRestaurantDto editRestaurant, int id, ClaimsPrincipal user);
     }
 
     public class RestaurantService : IRestaurantService
@@ -21,19 +23,28 @@ namespace RestaurantAPI.Services
         private readonly RestaurantDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
-        public RestaurantService(RestaurantDbContext dbContext, IMapper mapper, ILogger<RestaurantService> logger)
+        private readonly IAuthorizationService _authorizationService;
+
+        public RestaurantService(RestaurantDbContext dbContext, IMapper mapper, ILogger<RestaurantService> logger, IAuthorizationService authorizationService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
             _logger = logger;
+            _authorizationService = authorizationService;
         }
 
 
-        public void Update(EditRestaurantDto editRestaurant, int id)
+        public void Update(EditRestaurantDto editRestaurant, int id, ClaimsPrincipal user)
         {
             var restaurant = _dbContext.Restaurants.FirstOrDefault(x => x.Id == id);
             if (restaurant is null)
                 throw new NotFoundException("Restaurant not found");
+
+            var authorization = _authorizationService.AuthorizeAsync(user, restaurant.Id, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
+            if(!authorization.Succeeded)
+            {
+                throw new ForbiddenException();
+            }
 
             restaurant.Name = editRestaurant.Name;
             restaurant.Description= editRestaurant.Description;
@@ -81,9 +92,10 @@ namespace RestaurantAPI.Services
             return restaurantDtos;
         }
 
-        public int CreateRestaurant(CreateRestaurantDto dto)
+        public int CreateRestaurant(CreateRestaurantDto dto, int userId)
         {
             var restaurant = _mapper.Map<Restaurant>(dto);
+            restaurant.CreatedById = userId;
             _dbContext.Restaurants.Add(restaurant);
             _dbContext.SaveChanges();
             return restaurant.Id;
