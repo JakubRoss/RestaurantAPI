@@ -27,7 +27,7 @@ namespace RestaurantAPI
         public ActionResult EditRestaurant([FromBody] EditRestaurantDto dto ,[FromRoute] int id)
         {
 
-            _service.Update(dto,id, User);
+            _service.Update(dto,id);
 
             return Ok();
         }
@@ -45,7 +45,7 @@ namespace RestaurantAPI
         public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto dto) 
         {
             var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
-            var id = _service.CreateRestaurant(dto,userId);
+            var id = _service.CreateRestaurant(dto);
 
             return Created($"api/restaurant/{id}",id);
         }
