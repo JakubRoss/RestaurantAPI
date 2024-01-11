@@ -1,6 +1,6 @@
 ﻿# Web API Project:<p/>Very Simple Restaurant Managment System
 
-This project building on **.NET 6**, using for Human Resource Management for IT Company.
+This project building on **.NET 6**, using for simple restaurant Management.
 
 ## Technologies
 
